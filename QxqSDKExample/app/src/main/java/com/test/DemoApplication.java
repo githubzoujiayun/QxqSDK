@@ -17,12 +17,12 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         QxqHttpUtil.initSDK(getApplicationContext());
-        QxqHttpUtil.onBind().setBaseUrl("http://api.1313m.com/");
+        QxqHttpUtil.onBind().setBaseUrl("http://XX.XXXX.com/");
         QxqLogUtil.init(true);
         QxqToastUtil.init(getApplicationContext());
         QxqDialogUtil.init();
         QxqLoginShareUtil.init(this);
-        QxqLoginShareUtil.setQQ("1104911867","vZTng1q5fKbLQI08");
-        QxqLoginShareUtil.setWeiXin("wx023daf39180f3578","d4624c36b6795d1d99dcf0547af5443d");
+        QxqLoginShareUtil.setQQ("app_id","app_key");
+        QxqLoginShareUtil.setWeiXin("app_id","app_secret");
     }
 }

@@ -1,5 +1,6 @@
 package com.test;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
@@ -37,15 +38,15 @@ public class Fragment5 extends QxqBaseFragment {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn1:
-                QxqDialogUtil.onBind(getActivity())
+                QxqDialogUtil.onBind().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
                         .setSetCanceledOnTouchOutside(false)
-                        .showDialog();
+                        .showDialog(getActivity());
                 break;
             case R.id.btn2:
-                QxqDialogUtil.onBind(getActivity())
+                QxqDialogUtil.onBind().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
@@ -57,10 +58,10 @@ public class Fragment5 extends QxqBaseFragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                             }
                         })
-                        .showDialog();
+                        .showDialog(getActivity());
                 break;
             case R.id.btn3:
-                QxqDialogUtil.onBind(getActivity())
+                QxqDialogUtil.onBind().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
@@ -80,7 +81,7 @@ public class Fragment5 extends QxqBaseFragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                             }
                         })
-                        .showDialog();
+                        .showDialog(getActivity());
                 break;
         }
     }

@@ -24,23 +24,18 @@ import java.util.ArrayList;
  */
 public class MainActivity extends QxqBaseActivity {
 
-    String[] strs = new String[]{"图片选择","文件上传下载","网络请求","检查更新","提示框"};
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    String[] strs = new String[]{"图片选择","文件上传下载","网络请求","检查更新","提示框",
+            "RecyclerViewToLinearLayoutManager","RecyclerViewToGridLayoutManager","轮播广告位","第三方登录","第三方分享"};
 
 
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.main);
+    protected int setContentViewId() {
+        return R.layout.main;
     }
 
 
     @Override
     public void initLayout() {
-
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,20,0,0);

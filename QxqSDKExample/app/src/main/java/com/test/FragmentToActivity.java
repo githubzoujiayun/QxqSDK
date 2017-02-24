@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.qxq.base.QxqSwipeBackActivity;
+import com.qxq.login_share.QxqLoginShareUtil;
 import com.qxq.photopick.ImageInfo;
 import com.qxq.photopick.PhotoPickResult;
 import com.qxq.photopick.PhotoPickUtil;
@@ -44,6 +45,21 @@ public class FragmentToActivity extends QxqSwipeBackActivity {
             case 5:
                 fragment = new Fragment5();
                 break;
+            case 6:
+                fragment = new Fragment6();
+                break;
+            case 7:
+                fragment = new Fragment7();
+                break;
+            case 8:
+                fragment = new Fragment8();
+                break;
+            case 9:
+                fragment = new Fragment9();
+                break;
+            case 10:
+                fragment = new Fragment10();
+                break;
         }
 
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment_layout,fragment).commit();
@@ -55,8 +71,8 @@ public class FragmentToActivity extends QxqSwipeBackActivity {
     }
 
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.fragmentmain);
+    protected int setContentViewId() {
+        return R.layout.fragmentmain;
     }
 
 
@@ -70,16 +86,24 @@ public class FragmentToActivity extends QxqSwipeBackActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callBack = (ChooseImageCallBack) fragment;
-        PhotoPickUtil.newInstance().onActivityResult(requestCode,resultCode,data, new PhotoPickResult() {
-            @Override
-            public void OneImage(String path) {
-                callBack.OneImage(path);
-            }
-            @Override
-            public void ListImage(ArrayList<ImageInfo> arrayList) {
-                callBack.ListImage(arrayList);
-            }
-        });
+        if(requestCode == 11101){
+            QxqLoginShareUtil.onBind(this).onActivityResult(requestCode,resultCode,data);
+        }
+        try{
+            callBack = (ChooseImageCallBack) fragment;
+            PhotoPickUtil.newInstance().onActivityResult(requestCode,resultCode,data, new PhotoPickResult() {
+                @Override
+                public void OneImage(String path) {
+                    callBack.OneImage(path);
+                }
+                @Override
+                public void ListImage(ArrayList<ImageInfo> arrayList) {
+                    callBack.ListImage(arrayList);
+                }
+            });
+        }catch (ClassCastException e){
+
+        }
+
     }
 }

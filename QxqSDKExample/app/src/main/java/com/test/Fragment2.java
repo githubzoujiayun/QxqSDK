@@ -46,7 +46,8 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                 dialog.setCancelable(true);
                 dialog.setMax(100);
                 dialog.show();
-                QxqHttpUtil.onBind()
+
+                QxqHttpUtil.onBind().downloadBuilder()
                         .setDownLoadUrl("")
                         .setDownLoadFilePath("")
                         .setDownLoadFileName("")
@@ -67,7 +68,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                                 dialog.setProgress(progress);
                             }
                         })
-                        .download();
+                        .startDownload();
             }
         });
 
@@ -86,7 +87,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                 String path = "file path";
                 Map<String ,String> map = new HashMap<String, String>();
 
-                QxqHttpUtil.onBind()
+                QxqHttpUtil.onBind().uploadBuilder()
                         .setUpLoadFileName("icon")
                         .setUpLoadFilePath(path)
                         .setUpLoadMap(map)
@@ -110,7 +111,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                                 dialog.setProgress(progress2);
                             }
                         })
-                        .uploadInfo();
+                        .startUploadInfo();
 
 
             }
@@ -154,7 +155,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
         dialog.setCancelable(true);
         dialog.setMax(100);
         dialog.show();
-        QxqHttpUtil.onBind()
+        QxqHttpUtil.onBind().uploadBuilder()
                 .setUpLoadFilePath(path)
                 .setUpLoadFileName("")
                 .setUpLoadUrl("")
@@ -178,7 +179,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                         dialog.setProgress(progress2);
                     }
                 })
-                .upload();
+                .startUploadFile();
     }
 
     @Override
@@ -201,7 +202,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
             map.put("",path);
         }
 
-        QxqHttpUtil.onBind()
+        QxqHttpUtil.onBind().uploadBuilder()
                 .setUpLoadFiles(map)
                 .setUpLoadIsImage(true)
                 .setUpLoadUrl("")
@@ -224,6 +225,6 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                         dialog.setProgress(progress2);
                     }
                 })
-                .uploadFiles();
+                .startUploadFiles();
     }
 }

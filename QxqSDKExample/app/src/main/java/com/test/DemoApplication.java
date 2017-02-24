@@ -3,6 +3,7 @@ package com.test;
 import android.app.Application;
 
 import com.qxq.http.QxqHttpUtil;
+import com.qxq.login_share.QxqLoginShareUtil;
 import com.qxq.utils.QxqDialogUtil;
 import com.qxq.utils.QxqLogUtil;
 import com.qxq.utils.QxqToastUtil;
@@ -20,6 +21,8 @@ public class DemoApplication extends Application {
         QxqLogUtil.init(true);
         QxqToastUtil.init(getApplicationContext());
         QxqDialogUtil.init();
-
+        QxqLoginShareUtil.init(this);
+        QxqLoginShareUtil.setQQ("1104911867","vZTng1q5fKbLQI08");
+        QxqLoginShareUtil.setWeiXin("wx023daf39180f3578","d4624c36b6795d1d99dcf0547af5443d");
     }
 }

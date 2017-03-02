@@ -38,7 +38,7 @@ public class ViewPagerActivity extends QxqSwipeBackActivity {
                 .setImageCycleViewListener(new ImageCycleViewListener() {
                     @Override
                     public void onImageClick(int postion, View imageView) {
-                        QxqToastUtil.onBind().showLongToast("第"+(postion + 1)+"个");
+                        QxqToastUtil.getInstance(getApplicationContext()).showLongToast("第"+(postion + 1)+"个");
                     }
                 })
                 .show(getApplicationContext());

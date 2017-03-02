@@ -40,7 +40,7 @@ public class Fragment9 extends QxqBaseFragment {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn1:
-                dilaog = QxqDialogUtil.onBind().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(getActivity());
+                dilaog = QxqDialogUtil.getInstance().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(getActivity());
                 QxqLoginShareUtil.onBind(getActivity()).loginToQQ(new QxqLoginShareCallBack() {
                     @Override
                     public void onError(String error) {
@@ -60,17 +60,17 @@ public class Fragment9 extends QxqBaseFragment {
                     @Override
                     public void onComplete(String json) {
                         dilaog.dismiss();
-                        QxqLogUtil.onBind().i("json",json);
+                        QxqLogUtil.getInstance().i("json",json);
                     }
                 });
                 break;
             case R.id.btn2:
-                dilaog = QxqDialogUtil.onBind().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(getActivity());
+                dilaog = QxqDialogUtil.getInstance().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(getActivity());
                 QxqLoginShareUtil.onBind(getActivity()).loginToWeiXin(new QxqLoginShareCallBack() {
                     @Override
                     public void onError(String error) {
                         dilaog.dismiss();
-                        QxqLogUtil.onBind().i("ERROR",error+"===");
+                        QxqLogUtil.getInstance().i("ERROR",error+"===");
                     }
 
                     @Override
@@ -86,7 +86,7 @@ public class Fragment9 extends QxqBaseFragment {
                     @Override
                     public void onComplete(String json) {
                         dilaog.dismiss();
-                        QxqLogUtil.onBind().i("json",json+"---");
+                        QxqLogUtil.getInstance().i("json",json+"---");
                     }
                 });
                 break;

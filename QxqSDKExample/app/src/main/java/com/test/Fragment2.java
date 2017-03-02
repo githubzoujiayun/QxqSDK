@@ -47,19 +47,19 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                 dialog.setMax(100);
                 dialog.show();
 
-                QxqHttpUtil.onBind().downloadBuilder()
+                QxqHttpUtil.getInstance().downloadBuilder()
                         .setDownLoadUrl("")
                         .setDownLoadFilePath("")
                         .setDownLoadFileName("")
                         .setDownLoadListener(new OnDownLoadListener() {
                             @Override
                             public void onSuccess() {
-                                QxqToastUtil.onBind().showLongToast("下载完成!");
+                                QxqToastUtil.getInstance(getActivity()).showLongToast("下载完成!");
                                 dialog.dismiss();
                             }
                             @Override
                             public void onFailure(String error) {
-                                QxqToastUtil.onBind().showLongToast("下载失败!"+error);
+                                QxqToastUtil.getInstance(getActivity()).showLongToast("下载失败!"+error);
                                 dialog.dismiss();
                             }
                             @Override
@@ -87,7 +87,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                 String path = "file path";
                 Map<String ,String> map = new HashMap<String, String>();
 
-                QxqHttpUtil.onBind().uploadBuilder()
+                QxqHttpUtil.getInstance().uploadBuilder()
                         .setUpLoadFileName("icon")
                         .setUpLoadFilePath(path)
                         .setUpLoadMap(map)
@@ -95,13 +95,13 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                         .setUpLoadListener(new OnUpLoadListener() {
                             @Override
                             public void onSuccess() {
-                                QxqToastUtil.onBind().showLongToast("上传成功!");
+                                QxqToastUtil.getInstance(getActivity()).showLongToast("上传成功!");
                                 dialog.dismiss();
                             }
 
                             @Override
                             public void onFailure(String error) {
-                                QxqToastUtil.onBind().showLongToast("上传失败!"+error);
+                                QxqToastUtil.getInstance(getActivity()).showLongToast("上传失败!"+error);
                                 dialog.dismiss();
                             }
 
@@ -155,7 +155,7 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
         dialog.setCancelable(true);
         dialog.setMax(100);
         dialog.show();
-        QxqHttpUtil.onBind().uploadBuilder()
+        QxqHttpUtil.getInstance().uploadBuilder()
                 .setUpLoadFilePath(path)
                 .setUpLoadFileName("")
                 .setUpLoadUrl("")
@@ -163,13 +163,13 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
                 .setUpLoadListener(new OnUpLoadListener() {
                     @Override
                     public void onSuccess() {
-                        QxqToastUtil.onBind().showLongToast("上传成功!");
+                        QxqToastUtil.getInstance(getActivity()).showLongToast("上传成功!");
                         dialog.dismiss();
                     }
 
                     @Override
                     public void onFailure(String error) {
-                        QxqToastUtil.onBind().showLongToast("上传失败!"+error);
+                        QxqToastUtil.getInstance(getActivity()).showLongToast("上传失败!"+error);
                         dialog.dismiss();
                     }
 
@@ -202,20 +202,20 @@ public class Fragment2 extends QxqBaseFragment implements ChooseImageCallBack{
             map.put("",path);
         }
 
-        QxqHttpUtil.onBind().uploadBuilder()
+        QxqHttpUtil.getInstance().uploadBuilder()
                 .setUpLoadFiles(map)
                 .setUpLoadIsImage(true)
                 .setUpLoadUrl("")
                 .setUpLoadListener(new OnUpLoadListener() {
                     @Override
                     public void onSuccess() {
-                        QxqToastUtil.onBind().showLongToast("上传成功!");
+                        QxqToastUtil.getInstance(getActivity()).showLongToast("上传成功!");
                         dialog.dismiss();
                     }
 
                     @Override
                     public void onFailure(String error) {
-                        QxqToastUtil.onBind().showLongToast("上传失败!"+error);
+                        QxqToastUtil.getInstance(getActivity()).showLongToast("上传失败!"+error);
                         dialog.dismiss();
                     }
 

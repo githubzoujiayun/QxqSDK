@@ -90,7 +90,7 @@ public class Fragment6 extends QxqBaseFragment{
         @Override
         public void onItemClick(int position) {
             TestModel testModel = (TestModel) adapter.getItem(position);
-            QxqToastUtil.onBind().showLongToast(testModel.getName());
+            QxqToastUtil.getInstance(getActivity()).showLongToast(testModel.getName());
         }
         @Override
         public boolean onItemLongClick(int position) {

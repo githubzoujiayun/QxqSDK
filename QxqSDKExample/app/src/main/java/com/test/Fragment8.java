@@ -48,7 +48,7 @@ public class Fragment8 extends QxqBaseFragment {
                 .setImageCycleViewListener(new ImageCycleViewListener() {
                     @Override
                     public void onImageClick(int postion, View imageView) {
-                        QxqToastUtil.onBind().showLongToast("第"+(postion + 1)+"个");
+                        QxqToastUtil.getInstance(getActivity()).showLongToast("第"+(postion + 1)+"个");
                     }
                 })
                 .show(getActivity());

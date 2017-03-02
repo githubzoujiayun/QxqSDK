@@ -6,6 +6,11 @@ QxqSDK
 1.3.4版本已经完成第三方登录和分享,请各位小伙伴尽快升级到1.3.4版本<br>
 1.3.4版本添加RecyclerView的BaseAdapter、自定义轮播广告控件、第三方登录（QQ和微信）、第三方分享（QQ和微信），详情请参考下面的介绍<br>
 
+
+1.4.0版本升级完成。<br>
+主要对sdk代码的设计模式进行优化<br>
+升级描述请见https://github.com/qxq5434/QxqSDK/blob/master/1.4.1升级讲解 <br>
+
 如果小伙伴有什么好的建议请发邮件至qxq5434@sina.com，谢谢<br>
 ------
 
@@ -103,9 +108,7 @@ showLongToast(int strRes);
 showToast(String msg,int duration);
 
 调用方法
-1、在程序的Application中初始化ToastUtil
-   ToastUtil.init(getApplicationContext());
-2、ToastUtil.onBind().showToast();
+ToastUtil.getInstance().showToast();
 
 ```
 
@@ -116,7 +119,7 @@ showToast(String msg,int duration);
    LogUtil.init(true);
    //参数：当参数为true时打印log，否则不打印log   当应用在调试阶段设置为true，当应用正式上线后设置为false
    
-2、LogUtil.onBind().i(String tag, String desc);
+2、LogUtil.getInstance().i(String tag, String desc);
 
 ```
 
@@ -125,9 +128,7 @@ showToast(String msg,int duration);
 ```java
 
 调用方法
-1、在程序的Application中初始化DialogUtil
-   DialogUtil.init();
-2、DialogUtil.onBind()//注:这里的this必须为activity不能是Context
+DialogUtil.getInstance()//注:这里的this必须为activity不能是Context
              .setTitle("")//diaolog标题
              .setMessage("")//diaolog描述
              .setBtn1Text("")//第一个按钮的文本
@@ -211,8 +212,8 @@ QxqHttpUtil
 在你的Application中初始化QxqHttpUtil
 ```java
 
-QxqHttpUtil.initSDK(getApplicationContext());
-QxqHttpUtil.onBind().setBaseUrl("your baseurl");
+QxqHttpUtil.getInstance().setBaseParam("your baseurl");
+QxqHttpUtil.getInstance().setBaseParam("your baseurl",int timeout);//timeout:访问超时时间设置
 
 ```
 
@@ -229,7 +230,7 @@ QxqHttpUtil.onBind().setBaseUrl("your baseurl");
 
 
 ```java
-QxqHttpUtil.onBind().get("your url",
+QxqHttpUtil.getInstance().get("your url",
                         new OnHttpCallBackListener() {
                             @Override
                             public void onComplete(String json) {
@@ -252,7 +253,7 @@ QxqHttpUtil.onBind().get("your url",
 >>OnHttpCallBackListener:请求完成后的回调函数
 
 ```java
-QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
+QxqHttpUtil.getInstance().post("your url", map, new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
                         QxqLogUtil.onBind().i("TAG","json..."+json);
@@ -276,7 +277,7 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 >>OnHttpCallBackListener:请求完成后的回调函数
 
 ```java
- QxqHttpUtil.onBind().postToJson("your url", "your json", new OnHttpCallBackListener() {
+ QxqHttpUtil.getInstance().postToJson("your url", "your json", new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
                         QxqLogUtil.onBind().i("TAG","json..."+json);
@@ -296,7 +297,7 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 
 ```java
 
- QxqHttpUtil.onBind().downloadBuilder()
+ QxqHttpUtil.getInstance().downloadBuilder()
             .setDownLoadUrl("your file download url")
             .setDownLoadFilePath("/testDownLoad")//文件下载后存放的文件夹
             .setDownLoadFileName("test.apk")//文件下载后的名字
@@ -329,7 +330,7 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 * 单个文件上传
 ```java
 
- QxqHttpUtil.onBind().uploadBuilder()
+ QxqHttpUtil.getInstance().uploadBuilder()
             .setUpLoadFilePath("file path")//需要上传的文件路径
             .setUpLoadFileName("")//服务器的文件参数名
             .setUpLoadUrl("")//上传的地址
@@ -363,7 +364,7 @@ map.put("image0",new File(""));
 map.put("image1",new File(""));
 map.put("image2",new File(""));
 
-QxqHttpUtil.onBind().uploadBuilder()
+QxqHttpUtil.getInstance().uploadBuilder()
            .setUpLoadFiles(map)//需要上传的文件集
            .setUpLoadUrl("url")//上传的地址
            .setUpLoadIsImage(true)//设置上传的文件是否是图片，默认为true
@@ -395,7 +396,7 @@ Map<String ,String> map = new HashMap<String, String>();
 map.put("id","123");
 map.put("nickname","test");
 
-QxqHttpUtil.onBind().uploadBuilder()
+QxqHttpUtil.getInstance().uploadBuilder()
            .setUpLoadFileName("icon")//服务器图片参数名
            .setUpLoadFilePath("file path")//你需要上传的文件路径
            .setUpLoadMap(map)//你的用户信息
@@ -636,10 +637,10 @@ QxqLoginShareCallBack callBack = new QxqLoginShareCallBack() {
 -------
 ```java
 //显示进度条dialog
-QxqDialogUtil.onBind().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(this);
+QxqDialogUtil.getInstance().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(this);
 //关闭dialog
-QxqDialogUtil.onBind().dialog().dialogDismiss();
-QxqDialogUtil.onBind().progressDialog().dialogDismiss();
+QxqDialogUtil.getInstance().dialog().dialogDismiss();
+QxqDialogUtil.getInstance().progressDialog().dialogDismiss();
 ```
 
 

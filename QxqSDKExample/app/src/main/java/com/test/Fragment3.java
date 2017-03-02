@@ -1,15 +1,23 @@
 package com.test;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.Environment;
 import android.view.View;
 
 import com.qxq.base.QxqBaseFragment;
 import com.qxq.http.OnHttpCallBackListener;
 import com.qxq.http.QxqHttpUtil;
+import com.qxq.utils.QxqDialogUtil;
 import com.qxq.utils.QxqLogUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -17,6 +25,7 @@ import java.util.HashMap;
  */
 public class Fragment3 extends QxqBaseFragment {
 
+    FileOutputStream stream = null;
 
     @Override
     protected int setContentView() {
@@ -25,7 +34,21 @@ public class Fragment3 extends QxqBaseFragment {
 
     @Override
     protected void initData() {
-
+        try {
+            String pathName="/sdcard/test/";
+            String fileName="女生小说.txt";
+            File path = new File(pathName);
+            File file = new File(pathName + fileName);
+            if( !path.exists()) {
+                path.mkdir();
+            }
+            if( !file.exists()) {
+                file.createNewFile();
+            }
+            stream = new FileOutputStream(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -34,16 +57,17 @@ public class Fragment3 extends QxqBaseFragment {
         view.findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                QxqHttpUtil.onBind().get("",
+
+                QxqHttpUtil.getInstance().get("",
                         new OnHttpCallBackListener() {
                             @Override
                             public void onComplete(String json) {
-                                QxqLogUtil.onBind().i("TAG","json..."+json);
+                                QxqLogUtil.getInstance().i("TAG","json..."+json);
                             }
 
                             @Override
                             public void onError(String error) {
-                                QxqLogUtil.onBind().i("TAG","error..."+error);
+                                QxqLogUtil.getInstance().i("TAG","error..."+error);
                             }
                         });
             }
@@ -52,15 +76,15 @@ public class Fragment3 extends QxqBaseFragment {
         view.findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                QxqHttpUtil.onBind().post("", new HashMap<String, String>(), new OnHttpCallBackListener() {
+                QxqHttpUtil.getInstance().post("", new HashMap<String, String>(), new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
-                        QxqLogUtil.onBind().i("TAG","json..."+json);
+                        QxqLogUtil.getInstance().i("TAG","json..."+json);
                     }
 
                     @Override
                     public void onError(String error) {
-                        QxqLogUtil.onBind().i("TAG","error..."+error);
+                        QxqLogUtil.getInstance().i("TAG","error..."+error);
                     }
                 });
             }
@@ -70,15 +94,15 @@ public class Fragment3 extends QxqBaseFragment {
             @Override
             public void onClick(View view) {
 
-                QxqHttpUtil.onBind().postToJson("your url", "your json", new OnHttpCallBackListener() {
+                QxqHttpUtil.getInstance().postToJson("your url", "your json", new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
-                        QxqLogUtil.onBind().i("TAG","json..."+json);
+                        QxqLogUtil.getInstance().i("TAG","json..."+json);
                     }
 
                     @Override
                     public void onError(String error) {
-                        QxqLogUtil.onBind().i("TAG","error..."+error);
+                        QxqLogUtil.getInstance().i("TAG","error..."+error);
                     }
                 });
             }
@@ -94,4 +118,5 @@ public class Fragment3 extends QxqBaseFragment {
     public void onClick(View view) {
 
     }
+
 }

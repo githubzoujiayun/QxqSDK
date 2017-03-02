@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class MainActivity extends QxqBaseActivity {
 
     String[] strs = new String[]{"图片选择","文件上传下载","网络请求","检查更新","提示框",
-            "RecyclerViewToLinearLayoutManager","RecyclerViewToGridLayoutManager","轮播广告位","第三方登录","第三方分享"};
+            "RecyclerViewToLinearLayoutManager","RecyclerViewToGridLayoutManager","轮播广告位","第三方登录","第三方分享","图片加载"};
 
 
     @Override

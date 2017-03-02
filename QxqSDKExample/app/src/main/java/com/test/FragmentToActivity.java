@@ -60,8 +60,10 @@ public class FragmentToActivity extends QxqSwipeBackActivity {
             case 10:
                 fragment = new Fragment10();
                 break;
+            case 11:
+                fragment = new Fragment11();
+                break;
         }
-
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment_layout,fragment).commit();
     }
 

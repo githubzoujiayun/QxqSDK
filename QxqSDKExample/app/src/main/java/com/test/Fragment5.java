@@ -38,7 +38,7 @@ public class Fragment5 extends QxqBaseFragment {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn1:
-                QxqDialogUtil.onBind().dialog()
+                QxqDialogUtil.getInstance().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
@@ -46,7 +46,7 @@ public class Fragment5 extends QxqBaseFragment {
                         .showDialog(getActivity());
                 break;
             case R.id.btn2:
-                QxqDialogUtil.onBind().dialog()
+                QxqDialogUtil.getInstance().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
@@ -61,7 +61,7 @@ public class Fragment5 extends QxqBaseFragment {
                         .showDialog(getActivity());
                 break;
             case R.id.btn3:
-                QxqDialogUtil.onBind().dialog()
+                QxqDialogUtil.getInstance().dialog()
                         .setTitle("提示")
                         .setMessage("your message")
                         .setSetCancelable(true)
@@ -72,7 +72,7 @@ public class Fragment5 extends QxqBaseFragment {
 
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                QxqToastUtil.onBind().showLongToast("确定");
+                                QxqToastUtil.getInstance(getActivity()).showLongToast("确定");
                             }
                         })
                         .setBtn2Listener(new DialogInterface.OnClickListener(){

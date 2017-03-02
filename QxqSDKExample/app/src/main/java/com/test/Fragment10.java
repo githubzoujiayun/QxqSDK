@@ -107,22 +107,22 @@ public class Fragment10 extends QxqBaseFragment {
     QxqLoginShareCallBack callBack = new QxqLoginShareCallBack() {
         @Override
         public void onError(String error) {
-            QxqToastUtil.onBind().showLongToast(error);
+            QxqToastUtil.getInstance(getActivity()).showLongToast(error);
         }
 
         @Override
         public void onCancel(String str) {
-            QxqToastUtil.onBind().showLongToast(str);
+            QxqToastUtil.getInstance(getActivity()).showLongToast(str);
         }
 
         @Override
         public void onStart(String str) {
-            QxqToastUtil.onBind().showLongToast(str);
+            QxqToastUtil.getInstance(getActivity()).showLongToast(str);
         }
 
         @Override
         public void onComplete(String json) {
-            QxqToastUtil.onBind().showLongToast(json);
+            QxqToastUtil.getInstance(getActivity()).showLongToast(json);
         }
     };
 

@@ -7,7 +7,7 @@ QxqSDK
 1.3.4版本添加RecyclerView的BaseAdapter、自定义轮播广告控件、第三方登录（QQ和微信）、第三方分享（QQ和微信），详情请参考下面的介绍<br>
 
 
-1.4.0版本升级完成。<br>
+1.4.1版本升级完成。<br>
 主要对sdk代码的设计模式进行优化<br>
 升级描述请见https://github.com/qxq5434/QxqSDK/blob/master/1.4.1升级讲解 <br>
 

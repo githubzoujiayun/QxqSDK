@@ -9,7 +9,18 @@ QxqSDK
 
 1.4.1版本升级完成。<br>
 主要对sdk代码的设计模式进行优化<br>
-升级描述请见https://github.com/qxq5434/QxqSDK/blob/master/1.4.1升级讲解 <br>
+升级描述请见https://github.com/qxq5434/QxqSDK/blob/master/1.4.1升级讲解 <br><br>
+
+1.4.3版本升级<br>
+修改了一些bug<br>
+修改轮播广告第一次加载时会显示默认图标<br><br>
+
+
+希望小伙伴们能升级到最新版本,避免有些方法没有<br>
+-------
+```java
+compile 'com.github.qxq.library:qxqsdk:1.4.2'
+```
 
 如果小伙伴有什么好的建议请发邮件至qxq5434@sina.com，谢谢<br>
 ------
@@ -20,7 +31,7 @@ Android Studio依赖方法
 在工程的build.gradle中添加如下代码,一步轻松搞定
 
 ```java
-compile 'com.github.qxq.library:qxqsdk:1.0.1'
+compile 'com.github.qxq.library:qxqsdk:1.4.2'
 ```
 基类
 -------

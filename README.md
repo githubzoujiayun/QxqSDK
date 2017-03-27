@@ -648,7 +648,9 @@ QxqLoginShareCallBack callBack = new QxqLoginShareCallBack() {
 -------
 ```java
 //显示进度条dialog
-QxqDialogUtil.getInstance().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(this);
+ProgressDialog dialog = QxqDialogUtil.getInstance().progressDialog().setMessage("正在获取用户信息...").showProgressDialog(this);
+
+dialog.dismiss();
 ```
 
 
